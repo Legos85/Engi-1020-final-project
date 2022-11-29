@@ -14,11 +14,17 @@ def mode3():
 
     
     while good_to_go == 'start':
+
+        #checksthe light sensor to see if it's above the threshold
         if analog_read(6) >= 10:
+            #intial clear to get rid of the welcome text
             oled_clear()
             x = analog_read(0)
+
+            #checks the value of the dial
             if 0 <= x <= 127:
                 oled_print('e4')
+                #checks to see if the button is pressed so it can play the note
                 if digital_read(6) == True:
                     buzzer_frequency(5,n.notes['e4'])
                 elif digital_read(6) == False:
@@ -88,6 +94,8 @@ def mode3():
                     buzzer_stop(5)
                 sleep(0.5)
                 oled_clear()
+
+        #when the light sensor is below the threshold it stop the program
         elif analog_read(6) < 10:
             return 'done'
 
