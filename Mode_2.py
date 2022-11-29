@@ -15,6 +15,8 @@ def mode2():
     good_to_go = input("if you are ready to start enter 'start' or if you want to quit entre 'quit': ")
 
     while good_to_go == 'start':
+
+        #gets the tempo from the user and checks to makesure that the value is numeric
         tempo = input("what is the tempo of the song? ")
         while str.isnumeric(tempo) == False:
             print('please entre valid tempo')
@@ -22,6 +24,7 @@ def mode2():
         else:
             tempo = int(tempo)
 
+        #gets the amount of beats in the song from the user and checks to makesure that value is numeric
         how_long = input("how many notes are in this song? ")
         while str.isnumeric(how_long) == False:
             print('please entre valid amount of beats')
@@ -32,8 +35,11 @@ def mode2():
         song_list = []
         j = 0
         
+        #gets the notes and beats from the user
         for i in range(0,how_long):
             n_l = [input('note: '),(input('beat: '))]
+
+            #checks to see if the note is in the dictonary and if the beat is valid
             while n_l[0] not in n.notes.keys() or str.isnumeric(n_l[1]) == False and n.isfloat(n_l[1]) == False:
                 print("invalid note and/or beat")
                 n_l = [input('note: '),(input('beat: '))]
